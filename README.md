@@ -1,63 +1,56 @@
-# WMK Retro Studio — v0.2 (protótipo)
+<div align="center">
 
-**Editor gratuito e open source para criar mapas 2D e testá-los como jogos FPS 2.5D no navegador.**
+![WMK Retro Studio — identidade visual oficial](assets/logo-wmk-retro-studio.png)
 
-Autor: **Walney Moreira Klein — walneyk@hotmail.com**  
-Repositório: https://github.com/WalneyNF/WMK-RETRO-STUDIO  
-Licença do código-fonte original deste projeto: **MIT**.
+# WMK Retro Studio — v0.3 (experimental)
 
-## Primeiros passos
+**Crie mapas em 2D, jogue em primeira pessoa e compartilhe jogos retrô.**
 
-1. Baixe o repositório como ZIP e extraia em qualquer pasta no Windows.
-2. Dê duplo clique em `INICIAR-WINDOWS.cmd` ou abra `index.html` no Chrome.
-3. Selecione uma **camada** (piso, paredes, decoração ou objetos).
-4. Escolha o pincel e **clique/arraste** na grade para pintar. Botão direito apaga.
-5. Clique em **JOGAR FPS** para entrar na fase.
-6. Salve pelo botão **Salvar JSON**; use **Abrir JSON** para continuar depois.
+**Walney Moreira Klein — walneyk@hotmail.com**  
+[GitHub](https://github.com/WalneyNF/WMK-RETRO-STUDIO) · [Manual do usuário](manuais/MANUAL-USUARIO.html) · [Manual do desenvolvedor](manuais/MANUAL-DESENVOLVEDOR.html) · [Roadmap](manuais/ROADMAP.html)
+</div>
 
-**Controles FPS:** WASD para movimento; setas esquerda/direita para olhar; mouse gira a câmera quando capturado; E interage com portas; Espaço atira; Esc volta ao editor.
+## Rodando em sua máquina
 
-## Implementado neste protótipo
+**Windows 10/11:** baixe `Code → Download ZIP` no GitHub, extraia a pasta e dê duplo clique em `INICIAR-WINDOWS.cmd`. Ele abre `index.html` no navegador. Não precisa instalar Python, Node, Docker ou banco de dados para jogar e editar.
 
-- Editor 2D com grade e zoom, mapa de exemplo e editor de dimensões.
-- Camadas de piso, paredes, decoração e objetos, com visibilidade e bloqueio para pintura.
-- Parede, tijolo, metal, pedra, portas normais, azuis e douradas.
-- Importação de spritesheet PNG/JPG/WebP, recortada em até 64 tiles por importação, para texturas de parede.
-- Jogador, chaves azuis e douradas, inimigos simples, munição, kit médico e saída.
-- Motor FPS de raycasting em Canvas; colisão; abrir porta com E; coletar itens e atirar.
-- Exportação/importação de projetos JSON; desfazer/refazer básico.
-- Código separado em `core.js`, `layers.js`, `renderer.js` e `app.js`.
+**Linux/macOS:** extraia e abra `index.html` no navegador moderno (Chrome, Edge ou Firefox). Dependendo das configurações de segurança locais, use um servidor HTTP estático: `python -m http.server 8000` e acesse `http://localhost:8000`.
 
-## Limitações conhecidas
+**Para começar:** clique em `Mapa exemplo` → `JOGAR FPS`. Use **WASD** para andar, **setas esquerda/direita** para girar, **E** para portas, **Espaço** para atirar e **Esc** para sair. Para pintar: escolha camada e textura; clique ou arraste no mapa 2D; botão direito apaga.
 
-**Versão experimental, ainda não é um clone integral de Easy FPS Editor nem um editor comercial pronto.** Não inclui multiplayer, níveis verticais, física 3D real, IA com navegação complexa, importação de modelos 3D, animador de sprites, múltiplas fases conectadas ou EXE compilado. Os inimigos ficam em posições fixas e causam dano quando o jogador chega perto. A importação de tilesheets é aplicada às paredes; pisos/decor usam padrões internos. O suporte a mapas grandes e imagens pesadas ainda precisa ser otimizado.
+## Novidades da v0.3
 
-A execução visual interativa deve ser validada no navegador do usuário. Testes automatizados verificam somente o núcleo de regras.
+- Logo oficial no cabeçalho, no jogo e nos manuais; ícone de aplicação em `assets/`.
+- Painéis **móveis e redimensionáveis**: arraste a barra de título e redimensione pelo canto inferior direito.
+- Menu **Layouts** com salvar, carregar, renomear, excluir, restaurar, importar e exportar JSON.
+- Salvamento automático da posição atual no navegador, separado do mapa.
+- Manuais offline, em português: usuário, desenvolvedor e roadmap.
 
-## Organização
+## Funcionalidades do protótipo
+
+Editor de mapas 2D em grade, quatro camadas (piso, paredes, decoração e objetos), importação de tileset de parede, paredes e portas com chaves azuis/douradas, itens, inimigos simples, renderizador FPS 2.5D por raycasting, movimento e colisão, mapa exemplo, exportar/importar mapa JSON, desfazer/refazer básico.
+
+## Limitações
+
+É **experimental** e não é clone integral de Easy FPS Editor/Wolfenstein/Doom. Não há multiplayer, 3D geométrico completo, editor de eventos avançado, IA de inimigos com caminhos, exportador de EXE ou empacotador de jogos independente. Importação personalizada de texturas vale para paredes; pisos e decoração têm padrões internos. A funcionalidade visual deve ser testada em cada navegador. Os presets de layouts ficam no `localStorage` e podem ser apagados ao limpar os dados do navegador: **faça backup via Exportar JSON**. A licença do projeto não cobre recursos de terceiros.
+
+## Para desenvolvedores
 
 ```text
-WMK-RETRO-STUDIO/
-├── index.html               Interface completa
-├── css/style.css            Aparência
-├── js/core.js               Modelo de mapa e jogabilidade
-├── js/layers.js             Camadas e tilesets
-├── js/renderer.js           Raycaster FPS
-├── js/app.js                Interface e controles
-├── tests/test-core.js       Testes automatizados
-├── manuais/                 Guias em português
-├── LICENSE                  MIT
-└── INICIAR-WINDOWS.cmd      Abertura sem instalação
+index.html                 Interface e prévia de FPS
+assets/                    Logo e ícone oficiais
+css/style.css              Tema e painéis
+js/core.js                 Mapa, validação, regras e jogo
+js/layers.js               Camadas e serialização
+js/renderer.js             Raycasting e texturas
+js/app.js                  Editor e controles
+js/layouts.js              Painéis e layouts locais
+manuais/                   Guias HTML e roadmap
+tests/test-core.js         Testes do motor
 ```
 
-## Testes de desenvolvimento
+Executar testes: `node tests/test-core.js`. Sintaxe: `node --check js/app.js` etc.
 
-Se tiver Node.js instalado: `node tests/test-core.js`. Sem Node.js, é possível usar o aplicativo diretamente no navegador.
+## Licença e contribuições
 
-## Contribuições
-
-Issues e pull requests são bem-vindos. Evite adicionar imagens, músicas, mapas ou código de jogos comerciais sem permissão. **Kenney e outros pacotes externos não foram incluídos neste ZIP**; importe seus próprios recursos e respeite as licenças individuais.
-
-## Próximas versões
-
-Consulte `manuais/ROADMAP.html`. Prioridade: biblioteca de tilesets com metadados, editor visual de eventos, gatilhos, movimentação de inimigos, animações e exportador jogável independente.
+O código original WMK é distribuído sob **MIT**; consulte `LICENSE`. Preserve o aviso de direitos autorais e licença ao redistribuir. Para enviar contribuições, abra Issue/PR explicando a alteração e como testar. Evite subir sprites, músicas, fontes ou marcas de jogos comerciais. Tilesets de Kenney ou terceiros devem ser importados respeitando suas licenças individuais. A arte da identidade WMK incluída é material de marca: a MIT do código não concede automaticamente direitos de marca.

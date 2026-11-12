@@ -1,4 +1,4 @@
-/* WMK Retro Studio v0.2 - Editor, camadas, tilesets e gameplay */
+/* WMK Retro Studio v0.3 - Editor, camadas, tilesets e gameplay */
 (()=>{'use strict';
 const $=id=>document.getElementById(id),Core=WMKCore,L=WMKLayers;let map=L.ensure(Core.example()),layer='walls',brush='wall',zoom=31,showGrid=true,down=false,history=[],redo=[],game=null,running=false,last=0,pressed=new Set(),hoverCell=null;
 const ctx=$('map').getContext('2d'),canvas=$('map'),gctx=$('game').getContext('2d');
