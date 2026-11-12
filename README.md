@@ -2,7 +2,7 @@
 
 ![WMK Retro Studio — identidade visual oficial](assets/logo-wmk-retro-studio.png)
 
-# WMK Retro Studio — v0.5 (experimental)
+# WMK Retro Studio — v0.6 (experimental)
 
 **Crie mapas em 2D, jogue em primeira pessoa e compartilhe jogos retrô.**
 
@@ -18,7 +18,7 @@
 
 **Para começar:** clique em `Mapa exemplo` → `JOGAR FPS`. Use **WASD** para andar, **setas esquerda/direita** para girar, **E** para portas, **Espaço** para atirar e **Esc** para sair. Para pintar: escolha camada e textura; clique ou arraste no mapa 2D; botão direito apaga.
 
-## Novidades da v0.5
+## Novidades da v0.6
 
 - Logo oficial no cabeçalho, no jogo e nos manuais; ícone de aplicação em `assets/`.
 - Painéis **móveis e redimensionáveis**: arraste a barra de título e redimensione pelo canto inferior direito.
@@ -56,11 +56,15 @@ Executar testes: `node tests/test-core.js`. Sintaxe: `node --check js/app.js` et
 O código original WMK é distribuído sob **MIT**; consulte `LICENSE`. Preserve o aviso de direitos autorais e licença ao redistribuir. Para enviar contribuições, abra Issue/PR explicando a alteração e como testar. Evite subir sprites, músicas, fontes ou marcas de jogos comerciais. Tilesets de Kenney ou terceiros devem ser importados respeitando suas licenças individuais. A arte da identidade WMK incluída é material de marca: a MIT do código não concede automaticamente direitos de marca.
 
 
-## Novidade v0.5 — Biblioteca Kenney
+## Novidade v0.6 — Biblioteca Kenney
 
 Incluído o **Simplified Platformer Pack** de Kenney (CC0): 65 tiles, 18 itens, 8 poses de personagem, imagens PNG originais. Abra `manuais/GUIA-KENNEY-V04.html`. Os sprites decorativos do catálogo **não são entidades inteligentes**. Os mapas exportados referenciam os arquivos do catálogo na pasta `assets`.
 
 
-## HUD clássico (v0.5)
+## HUD clássico (v0.6)
 
 No painel **Inspector → Editor de HUD clássico** customize o HUD, escolha cores, carregue uma imagem e teste com **JOGAR FPS**. O mapa JSON guarda as configurações. O guia de dimensões e formatos está em [GUIA-HUD-E-RECURSOS-V05.html](manuais/GUIA-HUD-E-RECURSOS-V05.html). Música por fase, teto texturizado, sons e partículas configuráveis estão no roadmap, não implementados nesta versão.
+
+
+## Novidades v0.6 — Biblioteca própria
+Importação de imagens PNG/JPG/WebP por categoria (paredes, pisos, decoração e objetos), cadastro, duplicação, substituição de imagens, colisão sólida de paredes e paredes destrutíveis com vida configurável. O JSON do mapa contém os sprites. Veja [manual completo da v0.6](manuais/GUIA-BIBLIOTECAS-V06.html). **Ainda não estão implementados:** animações por quadros, IA configurável de monstros, colisão de objetos e piso texturizado no FPS.
