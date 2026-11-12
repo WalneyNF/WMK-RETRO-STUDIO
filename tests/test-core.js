@@ -1,0 +1,16 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const s={window:{},performance:{now:()=>10000}};vm.createContext(s);
+for(const f of ['core.js','layers.js']) vm.runInContext(fs.readFileSync(__dirname+'/../js/'+f,'utf8'),s,{filename:f});
+const C=s.window.WMKCore,L=s.window.WMKLayers;
+let m=L.ensure(C.example());assert.strictEqual(m.width,20);assert.strictEqual(m.cells.length,320);
+assert.strictEqual(m.cells[7*20+8],'blueDoor');assert.strictEqual(m.cells[8*20+13],'goldDoor');
+assert(L.paint(m,'floor',4,3,'wood'));assert.strictEqual(m.floorTiles[3*20+4],'wood');
+assert(L.paint(m,'decor',4,3,'rug'));assert.strictEqual(m.decoTiles[3*20+4],'rug');
+let m2=L.ensure(C.normalize(JSON.parse(L.serialize(m))));assert.strictEqual(m2.floorTiles[3*20+4],'wood');
+let game=new C.Game(m);game.x=7.4;game.y=7.5;game.a=0;
+game.interact();assert(game.message.includes('AZUL'));assert(!game.open.has('8,7'));
+game.keys.blueKey=1;game.interact();assert(game.open.has('8,7'));assert.strictEqual(game.solid(8.5,7.5),false);
+let game2=new C.Game(m);game2.x=3.5;game2.y=11.5;game2.pick();assert.strictEqual(game2.keys.blueKey,1);
+assert(C.validate(m).length===0);
+assert.throws(()=>C.normalize({width:30,height:30,cells:[]}),/inválido/);
+console.log('OK: 12 verificações (mapa, camadas, JSON, chave/porta, coleta, validação)');
