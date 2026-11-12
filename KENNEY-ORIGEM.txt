@@ -1,0 +1,3 @@
+Pacote de origem: https://kenney.nl/assets/simplified-platformer-pack
+Licença original em assets/kenney-simplified-platformer/License.txt
+CC0 1.0, crédito opcional.
